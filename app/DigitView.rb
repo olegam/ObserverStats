@@ -12,7 +12,6 @@ class DigitView < UIView
     @valueLabel.textColor = UIColor.whiteColor
     @valueLabel.backgroundColor = UIColor.clearColor
     @valueLabel.textAlignment = UITextAlignmentCenter
-    @valueLabel.text = ''
     self.addSubview(@valueLabel)
 
     barImage = UIImage.imageNamed('counter_overlay_bar')
