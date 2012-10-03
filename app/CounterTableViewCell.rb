@@ -1,4 +1,5 @@
 class CounterTableViewCell < UITableViewCell
+  # TableView cell to show a nice looking counter with a name and some digits
 
   NumDigits = 7
   DigitSpacing = 3
@@ -16,6 +17,7 @@ class CounterTableViewCell < UITableViewCell
     @nameLabel.textAlignment = UITextAlignmentCenter
     self.addSubview(@nameLabel)
 
+    # create an array of digit views and add them to the view
     @digitViews = []
     (0..NumDigits-1).each do |idx|
       digitFrame = [[266-(idx*(39+DigitSpacing)), 14.5], [39, 47]]
@@ -32,11 +34,13 @@ class CounterTableViewCell < UITableViewCell
     self.backgroundView.frame = [[5, 5], @backgroundImage.size]
   end
 
+  # set the value of each of the digits
   def setIntegerValue(value)
     formatStr = '%%0%dd' % NumDigits
     str = formatStr % value
     @digitViews.each_index do |idx|
       digitView = @digitViews[idx]
+      # only take one digit out of the string
       subStr = str[NumDigits-idx-1...NumDigits-idx]
       digitView.value = subStr
     end

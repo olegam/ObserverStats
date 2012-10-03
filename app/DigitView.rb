@@ -1,5 +1,5 @@
 class DigitView < UIView
-
+  # View to show a single digit that looks like a flip clock digit
   def initWithFrame(frame)
     super
 
@@ -14,6 +14,7 @@ class DigitView < UIView
     @valueLabel.textAlignment = UITextAlignmentCenter
     self.addSubview(@valueLabel)
 
+    # a small image to cover the digit and make it look like a flip digit
     barImage = UIImage.imageNamed('counter_overlay_bar')
     @barView = UIImageView.alloc.initWithImage(barImage)
     self.addSubview(@barView)

@@ -1,5 +1,8 @@
 class StatsListViewController < UITableViewController
+  # View controller showing a list ofcounters
 
+
+  # For taking Default.png screenshots
   DefaultImageCaptureMode = false
 
   def viewDidLoad
@@ -12,7 +15,7 @@ class StatsListViewController < UITableViewController
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
 
-
+    # refresh data when the app is brought to the forground
     NSNotificationCenter.defaultCenter.addObserverForName(UIApplicationWillEnterForegroundNotification, object:nil, queue:NSOperationQueue.new, usingBlock:lambda do |n|
         refreshData
     end)
@@ -39,12 +42,15 @@ class StatsListViewController < UITableViewController
 
   CELLID = 'StatCellIdentifier'
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
+    # try to reuse a cell
     cell = tableView.dequeueReusableCellWithIdentifier(CELLID) || begin
+      # create a new cell
       cell = CounterTableViewCell.alloc.initWithStyle(UITableViewCellStyleValue1, reuseIdentifier:CELLID)  
       cell.selectionStyle = UITableViewCellSelectionStyleNone    
       cell
     end
 
+    # configure the custom cell
     stat = @stats[indexPath.row]
     cell.name = stat[:name]
     cell.integerValue = stat[:value].intValue
