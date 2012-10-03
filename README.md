@@ -1,7 +1,7 @@
 # ObserverStats
-This iPhone app written in RubyMotion shows basic statistics from a webservice. Such as the total number of user of a service. 
+iPhone app written in RubyMotion to show simple numeric statistics from a REST webservice. Could be the total number of users of an app or service. 
 
-The app connects to a webservice that works like this:
+Connects to a webservice that works like this:
 	
 	GET test.com/api/v1/stats
 
@@ -16,6 +16,7 @@ The app connects to a webservice that works like this:
 	    ]
 	}
 
-![Mandatory screenshot](http://github.com/olegam/ObserverStats/blob/master/marketing/screenshot1.png?raw=true)
 
-The app was written in half a day and is my very first project with RubyMotion. This demonstrates that for an experienced iOS developer it is very easy to get started writing less code with RubyMotion.
+The code was written in half a day and is my first project with RubyMotion. This demonstrates that for an experienced iOS developer it is very easy to get started writing apps with less code using RubyMotion.
+
+![Mandatory screenshot](http://github.com/olegam/ObserverStats/blob/master/marketing/screenshot1.png?raw=true)
