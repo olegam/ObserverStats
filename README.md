@@ -13,8 +13,8 @@ The app connects to a webservice that works like this:
             "value": 7
         }, 
         ...
-    ]
-}
+	    ]
+	}
 
 ![Mandatory screenshot](http://github.com/olegam/ObserverStats/blob/master/marketing/screenshot1.png?raw=true)
 
