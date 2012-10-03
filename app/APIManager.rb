@@ -13,6 +13,7 @@ class APIManager
 
   def initialize
     @networkQueue = NSOperationQueue.new
+    @networkQueue.addObserver(self, forKeyPath:'operations', options:0, context:nil)
   end
 
   @@sharedInstance = APIManager.new
@@ -36,6 +37,7 @@ class APIManager
     request.URL = NSURL.URLWithString(EndpointURL + resource[:path])
     request.HTTPMethod = resource[:method]
 
+    UIApplication.sharedApplication.networkActivityIndicatorVisible = true
     NSURLConnection.sendAsynchronousRequest(request, queue:@networkQueue, completionHandler: lambda do |response, data, error|
       if error then completionLambda.call(error, nil) end
       if response.statusCode >= 400
@@ -47,4 +49,17 @@ class APIManager
     end)
   end
 
+  def observeValueForKeyPath(keyPath, ofObject:object, change:change, context:cotext)
+    if keyPath == 'operations'
+      evaluateActivityIndicator
+    end
+
+  end
+
+  def evaluateActivityIndicator
+    NSLog 'evaluation network indicator... count:%d' % @networkQueue.operations.count
+    Dispatch::Queue.main.async do
+      UIApplication.sharedApplication.networkActivityIndicatorVisible = (@networkQueue.operations.count > 0)
+    end
+  end
 end
